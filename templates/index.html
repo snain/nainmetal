@@ -3,20 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="{{ url_for('static', filename='images/nain_icon.svg') }}" type="image/svg+xml">
+    <link rel="icon" href="../static/images/nain_icon.svg" type="image/svg+xml">
     <title>Nain's Metal World - Home</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="../static/css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
     <header>
         <nav>
             <div class="logo">Nain's Metal World</div>
-            <ul>
-                <li><a href="#">Home</a></li>
-                <li><a href="#">About Us</a></li>
-                <li><a href="#">Shop Now</a></li>
+            <input type="checkbox" id="menu-toggle" class="menu-toggle">
+            <label for="menu-toggle" class="hamburger">
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+            </label>
+            <ul class="nav-links">
+                <li><a href="#"><i class="fas fa-home"></i> Home</a></li>
+                <li><a href="#"><i class="fas fa-info-circle"></i> About Us</a></li>
+                <li><a href="#"><i class="fas fa-store"></i> Shop Now</a></li>
                 <li class="dropdown">
-                    <a href="#" class="dropbtn">All Categories</a>
+                    <a href="#" class="dropbtn"><i class="fas fa-th-list"></i> All Categories</a>
                     <div class="dropdown-content">
                         <a href="#">Idols & Figurines</a>
                         <a href="#">Pooja Accessories</a>
@@ -27,7 +37,10 @@
             </ul>
             <div class="search-bar">
                 <input type="text" placeholder="Search...">
-                <button>Search</button>
+                <button><i class="fas fa-search"></i> Search</button>
+            </div>
+            <div class="cart-icon">
+                <a href="#"><i class="fas fa-shopping-cart"></i></a>
             </div>
         </nav>
     </header>
@@ -43,19 +56,19 @@
             <h2>Top Categories</h2>
             <div class="category-grid">
                 <div class="category-item">
-                    <img src="{{ url_for('static', filename='images/Idols & Figurines.jpg') }}" alt="Idols & Figurines">
+                    <img src="../static/images/Idols & Figurines.jpg" alt="Idols & Figurines">
                     <h3>Idols & Figurines</h3>
                 </div>
                 <div class="category-item">
-                    <img src="{{ url_for('static', filename='images/Pooja Accessories.jpg') }}" alt="Pooja Accessories">
+                    <img src="../static/images/Pooja Accessories.jpg" alt="Pooja Accessories">
                     <h3>Pooja Accessories</h3>
                 </div>
                 <div class="category-item">
-                    <img src="{{ url_for('static', filename='images/spirituality.jpg') }}" alt="Spirituality">
+                    <img src="../static/images/spirituality.jpg" alt="Spirituality">
                     <h3>Spirituality</h3>
                 </div>
                 <div class="category-item">
-                    <img src="{{ url_for('static', filename='images/Home Decor.jpg') }}" alt="Home Decor">
+                    <img src="../static/images/Home Decor.jpg" alt="Home Decor">
                     <h3>Home Decor</h3>
                 </div>
             </div>
@@ -66,22 +79,34 @@
             <div class="product-grid">
                 <!-- Product items will go here -->
                 <div class="product-item">
-                    <img src="{{ url_for('static', filename='images/Product Name 1.png') }}" alt="Product 1">
+                    <img src="../static/images/Product Name 1.png" alt="Product 1">
                     <h3>Product Name 1</h3>
                     <p>₹6543</p>
-                    <button>Add to Cart</button>
+                    <button><i class="fas fa-cart-plus"></i> Add to Cart</button>
                 </div>
                 <div class="product-item">
-                    <img src="{{ url_for('static', filename='images/Product Name 2.png') }}" alt="Product 2">
+                    <img src="../static/images/Product Name 2.png" alt="Product 2">
                     <h3>Product Name 2</h3>
                     <p>₹4876</p>
-                    <button>Add to Cart</button>
+                    <button><i class="fas fa-cart-plus"></i> Add to Cart</button>
                 </div>
                 <div class="product-item">
-                    <img src="{{ url_for('static', filename='images/Product Name 3.png') }}" alt="Product 3">
+                    <img src="../static/images/Product Name 3.png" alt="Product 3">
                     <h3>Product Name 3</h3>
                     <p>₹3210</p>
-                    <button>Add to Cart</button>
+                    <button><i class="fas fa-cart-plus"></i> Add to Cart</button>
+                </div>
+                <div class="product-item">
+                    <img src="../static/images/Product Name 4.jpg" alt="Product 4">
+                    <h3>Product Name 4</h3>
+                    <p>₹7890</p>
+                    <button><i class="fas fa-cart-plus"></i> Add to Cart</button>
+                </div>
+                <div class="product-item">
+                    <img src="../static/images/Product Name 5.jpg" alt="Product 5">
+                    <h3>Product Name 5</h3>
+                    <p>₹2345</p>
+                    <button><i class="fas fa-cart-plus"></i> Add to Cart</button>
                 </div>
             </div>
         </section>
@@ -91,16 +116,28 @@
             <div class="product-grid">
                 <!-- New arrival items will go here -->
                 <div class="product-item">
-                    <img src="{{ url_for('static', filename='images/New Product 1.jpg') }}" alt="New Arrival 1">
+                    <img src="../static/images/New Product 1.jpg" alt="New Arrival 1">
                     <h3>New Product 1</h3>
                     <p>₹5987</p>
-                    <button>Add to Cart</button>
+                    <button><i class="fas fa-cart-plus"></i> Add to Cart</button>
                 </div>
                 <div class="product-item">
-                    <img src="{{ url_for('static', filename='images/New Product 2.jpg') }}" alt="New Arrival 2">
+                    <img src="../static/images/New Product 2.jpg" alt="New Arrival 2">
                     <h3>New Product 2</h3>
                     <p>₹4123</p>
-                    <button>Add to Cart</button>
+                    <button><i class="fas fa-cart-plus"></i> Add to Cart</button>
+                </div>
+                <div class="product-item">
+                    <img src="../static/images/New Product 3.jpg" alt="New Arrival 3">
+                    <h3>New Product 3</h3>
+                    <p>₹6789</p>
+                    <button><i class="fas fa-cart-plus"></i> Add to Cart</button>
+                </div>
+                <div class="product-item">
+                    <img src="../static/images/New Product 4.jpg" alt="New Arrival 4">
+                    <h3>New Product 4</h3>
+                    <p>₹1234</p>
+                    <button><i class="fas fa-cart-plus"></i> Add to Cart</button>
                 </div>
             </div>
         </section>
@@ -109,16 +146,16 @@
             <h2>Product Showcase</h2>
             <div class="gallery-grid">
                 <div class="gallery-item">
-                    <img src="{{ url_for('static', filename='images/Product Name 1.png') }}" alt="Product Gallery 1">
+                    <img src="../static/images/Product Name 1.png" alt="Product Gallery 1">
                 </div>
                 <div class="gallery-item">
-                    <img src="{{ url_for('static', filename='images/Product Name 2.png') }}" alt="Product Gallery 2">
+                    <img src="../static/images/Product Name 2.png" alt="Product Gallery 2">
                 </div>
                 <div class="gallery-item">
-                    <img src="{{ url_for('static', filename='images/Product Name 3.png') }}" alt="Product Gallery 3">
+                    <img src="../static/images/Product Name 3.png" alt="Product Gallery 3">
                 </div>
                 <div class="gallery-item">
-                    <img src="{{ url_for('static', filename='images/Product Name 4.jpg') }}" alt="Product Gallery 4">
+                    <img src="../static/images/Product Name 4.jpg" alt="Product Gallery 4">
                 </div>
             </div>
         </section>
@@ -177,15 +214,15 @@
 
         <section class="features">
             <div class="feature-item">
-                <h3>10:00am-9:00pm Support</h3>
+                <h3><i class="fas fa-headset"></i> 10:00am-9:00pm Support</h3>
                 <p>Support every time</p>
             </div>
             <div class="feature-item">
-                <h3>ACCEPT PAYMENT</h3>
+                <h3><i class="fas fa-credit-card"></i> ACCEPT PAYMENT</h3>
                 <p>Visa, Paypal, Master</p>
             </div>
             <div class="feature-item">
-                <h3>SECURED PAYMENT</h3>
+                <h3><i class="fas fa-lock"></i> SECURED PAYMENT</h3>
                 <p>100% secured</p>
             </div>
             <div class="feature-item">
