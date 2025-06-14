@@ -1,24 +1,23 @@
 /* General Body Styles */
 :root {
-    --color-primary: #C0C0C0; /* Silver */
-    --color-secondary: #FFD700; /* Gold */
-    --color-accent: #A9A9A9; /* Darker Silver/Gray */
-    --color-text: #333333; /* Dark Gray */
-    --color-text-light: #666666; /* Medium Gray */
-    --color-white: #ffffff;
-    --color-light-gray: #f8f8f8;
-    --color-dark-gray: #2c3e50; /* Dark Blue-Gray */
-    --color-border: #e0e0e0;
-    --color-shadow: rgba(0, 0, 0, 0.1);
+    --color-black: #000000;
+    --color-white: #F2F2F2;
+    --color-yellow: #EAE4D5; /* Replaced with light-gray from new palette */
+    --color-gray: #B6B09F;
+    --color-light-gray: #EAE4D5;
+    --color-dark-gray: #000000; /* Replaced with black from new palette */
+    --color-border: #EAE4D5; /* Replaced with light-gray from new palette */
+    --color-shadow: rgba(0, 0, 0, 0.2);
 }
 
+
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Nunito Sans', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    background-color: var(--white-bg);
-    color: var(--color-text);
+    background-color: var(--color-white);
+    color: var(--color-dark-gray);
     line-height: 1.6;
 }
 
@@ -31,18 +30,17 @@ body {
 
 /* Header and Navigation */
 header {
-    background-color: #FFFACD; /* Lemon Chiffon - a lighter yellow */
+    background-color: var(--color-yellow);
     padding: 15px 0;
-    border-bottom: 1px solid var(--border-color);
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    border-bottom: 1px solid var(--color-border);
+    box-shadow: 0 2px 4px var(--color-shadow);
 }
 
 nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    max-width: 1200px;
-    margin: 0 auto;
+    width: 100%;
     padding: 0 20px;
     flex-wrap: wrap; /* Allow navigation items to wrap on smaller screens */
 }
@@ -50,7 +48,7 @@ nav {
 .logo {
     font-size: 1.8em;
     font-weight: bold;
-    color: var(--color-text);
+    color: var(--color-black);
 }
 
 
@@ -63,6 +61,108 @@ nav ul {
     justify-content: center;
 }
 
+.menu-toggle {
+    display: none;
+}
+
+.hamburger {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+    padding: 10px;
+    z-index: 200;
+}
+
+.hamburger-line {
+    width: 30px;
+    height: 3px;
+    background-color: var(--color-black);
+    margin: 4px 0;
+    transition: all 0.3s ease;
+}
+
+@media (max-width: 768px) {
+    nav {
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+
+    .search-bar {
+        order: 3;
+        width: 100%;
+        margin-top: 15px;
+        margin-left: 0;
+    }
+
+    .cart-icon {
+        order: 2;
+        margin-left: auto;
+        margin-right: 20px;
+    }
+
+    nav ul {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        text-align: center;
+        background-color: var(--color-yellow);
+        position: absolute;
+        top: 70px; /* Adjust based on header height */
+        left: 0;
+        box-shadow: 0 2px 4px var(--color-shadow);
+        z-index: 150;
+    }
+
+    nav ul.nav-links {
+        display: none;
+    }
+
+    nav ul li {
+        margin: 0;
+        border-bottom: 1px solid rgba(0,0,0,0.1);
+    }
+
+    nav ul li:last-child {
+        border-bottom: none;
+    }
+
+    nav ul li a {
+        padding: 15px 0;
+    }
+
+    .dropdown-content {
+        position: static;
+        box-shadow: none;
+        border-top: none;
+        border-radius: 0;
+        background-color: rgba(255, 255, 255, 0.9);
+    }
+
+    .dropdown-content a {
+        padding-left: 30px;
+    }
+
+    .hamburger {
+        display: flex;
+    }
+
+    .menu-toggle:checked + .hamburger + .nav-links {
+        display: flex;
+    }
+
+    .menu-toggle:checked + .hamburger .hamburger-line:nth-child(1) {
+        transform: rotate(45deg) translate(5px, 5px);
+    }
+
+    .menu-toggle:checked + .hamburger .hamburger-line:nth-child(2) {
+        opacity: 0;
+    }
+
+    .menu-toggle:checked + .hamburger .hamburger-line:nth-child(3) {
+        transform: rotate(-45deg) translate(5px, -5px);
+    }
+}
+
 nav ul li {
     margin: 0 15px;
     position: relative;
@@ -70,7 +170,7 @@ nav ul li {
 
 nav ul li a {
     text-decoration: none;
-    color: var(--text-color);
+    color: var(--color-black);
     font-weight: 600;
     padding: 10px 0;
     transition: color 0.3s ease;
@@ -78,24 +178,34 @@ nav ul li a {
 }
 
 nav ul li a:hover {
-    color: var(--primary-color);
+        color: var(--color-white);
+    }
+
+.cart-icon {
+    margin-left: 20px;
+}
+
+.cart-icon .fas {
+    font-size: 30px;
+    color: var(--color-black);
+    vertical-align: middle;
 }
 
 /* Dropdown Menu */
 .dropdown-content {
     display: none;
     position: absolute;
-    background-color: var(--white-bg);
+    background-color: var(--color-white);
     min-width: 180px;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    box-shadow: 0px 8px 16px 0px var(--color-shadow);
     z-index: 100;
-    border-top: 3px solid var(--primary-color);
+    border-top: 3px solid var(--color-yellow);
     border-radius: 0 0 5px 5px;
     overflow: hidden;
 }
 
 .dropdown-content a {
-    color: var(--text-color);
+    color: var(--color-dark-gray);
     padding: 12px 16px;
     text-decoration: none;
     display: block;
@@ -105,8 +215,8 @@ nav ul li a:hover {
 }
 
 .dropdown-content a:hover {
-    background-color: var(--light-bg);
-    color: var(--primary-color);
+    background-color: var(--color-light-gray);
+    color: var(--color-yellow);
 }
 
 .dropdown:hover .dropdown-content {
@@ -116,7 +226,7 @@ nav ul li a:hover {
 /* Search Bar */
 .search-bar {
     display: flex;
-    border: 1px solid var(--border-color);
+    border: 1px solid var(--color-border);
     border-radius: 25px;
     overflow: hidden;
     flex-grow: 1;
@@ -133,8 +243,8 @@ nav ul li a:hover {
 }
 
 .search-bar button {
-    background-color: var(--primary-color);
-    color: rgb(255, 213, 0);
+    background-color: var(--color-gray);
+    color: var(--color-white);
     border: none;
     padding: 10px 15px;
     cursor: pointer;
@@ -143,22 +253,30 @@ nav ul li a:hover {
 }
 
 .search-bar button:hover {
-    background-color: var(--secondary-color);
+    background-color: var(--color-black);
 }
 
 /* Main Content Sections */
 main {
-    max-width: 1200px;
-    margin: 30px auto;
-    padding: 0 20px;
+    width: 100%;
+    margin: 20px 0;
+    padding: 0;
+}
+
+/* General Section Styles */
+section {
+    padding: 20px 20px;
+    margin-bottom: 20px;
+    background-color: var(--color-white);
+    text-align: center;
 }
 
 .product-item,
 .gallery-item {
-    background: linear-gradient(to bottom right, #FFFACD, #fff6c4, var(--color-primary)); /* Lemon Chiffon, Gold, Silver */
+    background-color: var(--color-light-gray);
     border-radius: 8px;
     padding: 15px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 8px var(--color-shadow);
     transition: transform 0.3s ease;
 }
 
@@ -169,17 +287,18 @@ main {
 
 /* Hero Section */
 .hero {
-    background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('../images/main_image.jpg') no-repeat center center/cover;
-    color: white;
-    text-align: center;
-    padding: 120px 20px;
-    border-radius: 10px;
-    margin-bottom: 50px;
+    background-color: var(--color-dark-gray);
+    background-image: url('../static/images/hero-bg.svg'); /* Keep the existing background image */
+    background-size: cover;
+    background-position: center;
+    color: var(--color-white); /* Change text color to white for better contrast */
+    padding: 60px 20px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    min-height: 400px; /* Ensure a minimum height for the hero section */
+    text-align: center;
+    width: 100%;
 }
 
 .hero h1 {
@@ -193,22 +312,21 @@ main {
     margin-bottom: 40px;
     max-width: 700px;
 }
-
 .shop-now-btn {
-    background-color: var(--primary-color);
-    color: white;
+    background-color: var(--color-yellow);
+    color: var(--color-black);
     padding: 18px 35px;
     border: none;
     border-radius: 30px;
     font-size: 20px;
     cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.2s ease;
+    transition: background-color 0.3s ease, transform 0.3s ease;
     text-transform: uppercase;
     letter-spacing: 1px;
 }
 
 .shop-now-btn:hover {
-    background-color: var(--secondary-color);
+    background-color: var(--color-gray);
     transform: translateY(-3px);
 }
 
@@ -217,7 +335,7 @@ h2 {
     text-align: center;
     font-size: 42px;
     margin-bottom: 40px;
-    color: var(--primary-color);
+    color: var(--color-black);
     position: relative;
     padding-bottom: 10px;
 }
@@ -230,13 +348,13 @@ h2::after {
     transform: translateX(-50%);
     width: 80px;
     height: 4px;
-    background-color: var(--primary-color);
+    background-color: var(--color-black);
     border-radius: 2px;
 }
 
 /* Category and Product Grids */
 .categories, .trending-products, .new-arrivals {
-    margin-bottom: 50px;
+    margin-bottom: 30px;
 }
 
 .category-grid, .product-grid {
@@ -246,7 +364,7 @@ h2::after {
 }
 
 .category-item, .product-item {
-    background-color: #ece8af; /* Lemon Chiffon - a lighter yellow */
+    background-color: var(--color-light-gray);
     border-radius: 10px;
     box-shadow: 0 4px 12px rgba(0,0,0,0.08);
     text-align: center;
@@ -268,26 +386,26 @@ h2::after {
     object-fit: contain; /* Changed to contain for better SVG display */
     border-radius: 8px;
     margin-bottom: 20px;
-    background-color: var(--light-bg); /* Background for images */
+    background-color: var(--color-white);
     padding: 10px;
 }
 
 .product-item h3, .category-item h3 {
     font-size: 22px;
     margin-bottom: 10px;
-    color: var(--primary-color);
+    color: var(--color-black);
 }
 
 .product-item p {
     font-size: 19px;
-    color: var(--secondary-color);
+    color: var(--color-gray);
     font-weight: bold;
     margin-bottom: 20px;
 }
 
 .product-item button {
     background-color: var(--primary-color);
-    color: white;
+    color: var(--color-white);
     padding: 12px 25px;
     border: none;
     border-radius: 25px;
@@ -297,20 +415,20 @@ h2::after {
 }
 
 .product-item button:hover {
-    background-color: var(--secondary-color);
+    background-color: var(--color-gray);
     transform: translateY(-2px);
 }
 
 /* Product Showcase Section */
 .product-showcase {
-    padding: 60px 20px;
+    padding: 30px 20px;
     text-align: center;
     background-color: var(--color-light-gray);
 }
 
 .product-showcase h2 {
     font-size: 2.5em;
-    color: var(--color-primary);
+    color: var(--color-black);
     margin-bottom: 40px;
     position: relative;
     display: inline-block;
@@ -324,15 +442,18 @@ h2::after {
     transform: translateX(-50%);
     width: 80px;
     height: 4px;
-    background-color: var(--color-accent);
+    background-color: var(--color-light-gray);
     border-radius: 2px;
 }
 
+.category-grid,
+.product-grid,
 .gallery-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 25px;
-    max-width: 1200px;
+    gap: 20px;
+    padding: 20px;
+    width: 100%;
     margin: 0 auto;
 }
 
@@ -358,9 +479,9 @@ h2::after {
 
 /* Customer Reviews Section */
 .customer-reviews {
-    padding: 40px 20px;
+    padding: 20px 20px;
     text-align: center;
-    background-color: var(--color-background-light);
+    background-color: var(--color-white);
     overflow: hidden; /* Hide overflow for 3D effect */
 }
 
@@ -371,18 +492,18 @@ h2::after {
 .average-rating .rating-value {
     font-size: 3em;
     font-weight: bold;
-    color: var(--color-primary);
+    color: var(--color-black);
     margin-right: 10px;
 }
 
 .average-rating .stars {
     font-size: 1.5em;
-    color: var(--color-secondary);
+    color: var(--color-gray);
 }
 
 .average-rating .based-on {
     font-size: 1em;
-    color: var(--color-text-dark);
+    color: var(--color-black);
     margin-left: 10px;
 }
 
@@ -437,7 +558,7 @@ h2::after {
 
 .face .reviewer-name {
     font-weight: bold;
-    color: var(--color-primary);
+    color: var(--color-black);
     font-size: 0.95em;
     text-align: right;
     width: 100%;
@@ -448,9 +569,9 @@ h2::after {
     16%  { transform: rotateY(90deg); }
     33%  { transform: rotateY(180deg); }
     50%  { transform: rotateY(270deg); }
-    66%  { transform: rotateY(360deg); transform: rotateX(90deg); }
-    83%  { transform: rotateY(360deg); transform: rotateX(180deg); }
-    100% { transform: rotateY(360deg); transform: rotateX(360deg); }
+    66%  { transform: rotateY(360deg); }
+    83%  { transform: rotateY(360deg); }
+    100% { transform: rotateY(360deg); }
 }
 
 /* Responsive adjustments for cube */
@@ -481,32 +602,43 @@ h2::after {
     color: var(--color-white);
 }
 
+.categories h2,
+.trending-products h2,
+.new-arrivals h2,
+.product-showcase h2,
+.customer-reviews h2,
 .about-us h2 {
+    text-align: center;
     font-size: 2.5em;
     margin-bottom: 40px;
+    color: var(--color-black);
     position: relative;
-    display: inline-block;
-    color: rgb(237, 220, 125);
+    padding-bottom: 10px;
 }
 
+.categories h2::after,
+.trending-products h2::after,
+.new-arrivals h2::after,
+.product-showcase h2::after,
+.customer-reviews h2::after,
 .about-us h2::after {
     content: '';
     position: absolute;
     left: 50%;
-    bottom: -10px;
+    bottom: 0;
     transform: translateX(-50%);
     width: 80px;
     height: 4px;
-    background-color: var(--color-accent);
+    background-color: var(--color-yellow);
     border-radius: 2px;
 }
 
 .about-content {
-    max-width: 900px;
+    width: 100%;
+    max-width: 800px;
     margin: 0 auto;
-    font-size: 1.1em;
-    line-height: 1.7;
-    text-align: justify;
+    text-align: left;
+    padding: 20px;
 }
 
 .about-content p {
@@ -518,7 +650,7 @@ h2::after {
     display: flex;
     justify-content: space-around;
     padding: 40px 20px;
-    background-color: #d1d1d1;
+    background-color: var(--color-light-gray);
     text-align: center;
     flex-wrap: wrap;
 }
@@ -530,7 +662,6 @@ h2::after {
     padding: 20px;
     background-color: var(--color-white);
     border-radius: 8px;
-    box-shadow: 0 4px 8px var(--color-shadow);
     transition: transform 0.3s ease;
 }
 
@@ -539,13 +670,13 @@ h2::after {
 }
 
 .feature-item h3 {
-    color: var(--color-primary);
+    color: var(--color-black);
     margin-bottom: 10px;
     font-size: 1.4em;
 }
 
 .feature-item p {
-    color: var(--color-text-light);
+    color: var(--color-black);
     font-size: 0.95em;
 }
 
@@ -561,7 +692,7 @@ h2::after {
 
 .store-location {
     text-align: center;
-    background-color: #f8f5f5;
+    background-color: var(--color-white);
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 4px 12px rgba(0,0,0,0.08);
@@ -569,7 +700,7 @@ h2::after {
 
 .store-location h2 {
     font-size: 2.5em;
-    color: var(--color-primary);
+    color: var(--color-black);
     margin-bottom: 40px;
     position: relative;
     display: inline-block;
@@ -583,7 +714,7 @@ h2::after {
     transform: translateX(-50%);
     width: 80px;
     height: 4px;
-    background-color: var(--color-accent);
+    background-color: var(--color-light-gray);
     border-radius: 2px;
 }
 
@@ -594,7 +725,7 @@ h2::after {
     overflow: hidden;
     max-width: 800px; /* Max width for the map container */
     margin: 0 auto; /* Center the map */
-    background: #f0f0f0;
+    background: var(--color-white);
     border-radius: 10px;
     box-shadow: 0 4px 12px var(--color-shadow);
 }
@@ -640,7 +771,7 @@ h2::after {
 
 .contact-details p {
     font-size: 1.1em;
-    color: var(--color-text);
+    color: var(--color-black);
     margin-bottom: 10px;
 }
 
@@ -656,7 +787,7 @@ h2::after {
 .social-icon {
     display: inline-block;
     font-size: 2.5em;
-    color: var(--color-text-light);
+    color: var(--color-black);
     margin: 0 15px;
     transition: color 0.3s ease, transform 0.3s ease;
 }
@@ -667,10 +798,11 @@ h2::after {
 }
 
 footer {
-    background-color: var(--color-dark-gray);
+    background-color: var(--color-black);
     color: var(--color-white);
     text-align: center;
-    padding: 20px;
+    padding: 30px 20px;
+    margin-top: 50px;
     font-size: 0.9em;
 }
 
